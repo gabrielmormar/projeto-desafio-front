@@ -1,0 +1,135 @@
+<br>
+<div class="card">
+    <h4 class="card-header mb-3">Cadastro de Empresas</h4>
+    <div class="card-body">
+        <h5 class="card-title">Formulário de cadastro</h5>
+        <form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="col-sm-3 form-group">
+                    <label for="nome">CNPJ</label>
+                    <input id="cnpj" formControlName="cnpj" mask="00.000.000/0000-00" [ngClass]="{ 'is-invalid': submitted && formControls.cnpj.errors }" class="form-control" type="text" placeholder="CNPJ da empresa" required>
+                    <div *ngIf="submitted && formControls.cnpj.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.cnpj.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 form-group">
+                    <label for="razao">Razão social</label>
+                    <input class="form-control" formControlName="razaoSocial" [ngClass]="{ 'is-invalid': submitted && formControls.razaoSocial.errors }" type="text" id="razao" placeholder="Razão social" required>
+                    <div *ngIf="submitted && formControls.cnpj.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.razaoSocial.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 form-group">
+                    <label for="tipo">Tipo da empresa</label>
+                    <select [ngClass]="{ 'is-invalid': submitted && formControls.tipoEmpresa.errors }" [ngClass]="{ 'is-invalid': submitted && formControls.razaoSocial.errors }" formControlName="tipoEmpresa" class="form-control" name="tipo" id="tipo">
+                        <option value="">Selecione...</option>
+                        <option value="1">Matriz</option>
+                        <option value="2">Filial</option>
+                    </select>
+                    <div *ngIf="submitted && formControls.tipoEmpresa.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.tipoEmpresa.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-4 form-group">
+                    <label>Nome da empresa</label>
+                    <input class="form-control" [ngClass]="{ 'is-invalid': submitted && formControls.nome.errors }" formControlName="nome" type="text" placeholder="Nome da empresa">
+                    <div *ngIf="submitted && formControls.nome.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.nome.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label>E-mail</label>
+                    <input class="form-control" [ngClass]="{ 'is-invalid': submitted && formControls.email.errors }" formControlName="email" type="email" placeholder="E-mail">
+                    <div *ngIf="submitted && formControls.email.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.email.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label>Contato</label>
+                    <input class="form-control" formControlName="contato" [ngClass]="{ 'is-invalid': submitted && formControls.contato.errors }" type="text" placeholder="Contato">
+                    <div *ngIf="submitted && formControls.contato.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.contato.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-2 form-group">
+                    <label>CEP</label>
+                    <input class="form-control" (keyup)="onKey($event)" [ngClass]="{ 'is-invalid': submitted && formControls.cep.errors }" mask="00000-000" formControlName="cep" type="text" placeholder="CEP">
+                    <div *ngIf="submitted && formControls.cep.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.cep.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 form-group">
+                    <label>Estado</label>
+                    <input class="form-control" [ngClass]="{ 'is-invalid': submitted && formControls.estado.errors }" formControlName="estado" type="text" placeholder="UF">
+                    <div *ngIf="submitted && formControls.estado.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.estado.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>Cidade</label>
+                    <input class="form-control" [ngClass]="{ 'is-invalid': submitted && formControls.cidade.errors }" formControlName="cidade" type="text" placeholder="Nome da cidade">
+                    <div *ngIf="submitted && formControls.cidade.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.cidade.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-1 form-group">
+                    <label>Número</label>
+                    <input class="form-control" formControlName="numero" [ngClass]="{ 'is-invalid': submitted && formControls.numero.errors }" type="text" placeholder="Nº">
+                    <div *ngIf="submitted && formControls.numero.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.numero.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-6 form-group">
+                    <label>Bairro</label>
+                    <input class="form-control" [ngClass]="{ 'is-invalid': submitted && formControls.bairro.errors }" formControlName="bairro" type="text" placeholder="Nome do bairro">
+                    <div *ngIf="submitted && formControls.bairro.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.bairro.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label>Logradouro</label>
+                    <input class="form-control" [ngClass]="{ 'is-invalid': submitted && formControls.logradouro.errors }" formControlName="logradouro" type="text" placeholder="Informe o Logradouro">
+                    <div *ngIf="submitted && formControls.logradouro.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.logradouro.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-12 form-group">
+                    <label>Complemento</label>
+                    <input class="form-control" formControlName="complemento" [ngClass]="{ 'is-invalid': submitted && formControls.complemento.errors }" type="text" placeholder="Informe um Complemento">
+                    <div *ngIf="submitted && formControls.complemento.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.complemento.errors.required">Campo Obrigatório</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row centered">
+                <div class="col-sm-2 form-group">
+                    <button class="btn btn-primary form-control" [routerLink]="['']" routerLinkActive="router-link-active">Lista de empresas</button>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <button class="btn btn-success form-control" type="submit">{{getId ? 'Atualizar' : 'Salvar'}}</button>
+                </div>
+            </div>
+        </form>       
+        <p>
+            {{ formModel.value | json }}
+        </p>
+    </div>
+</div>
+<br>
